@@ -44,3 +44,23 @@ mysql> describe addressbook;
 | zip          | mediumtext  | NO   |     | NULL    |       |
 +--------------+-------------+------+-----+---------+-------+
 7 rows in set (0.00 sec)
+
+
+mysql> #UC3 Ability to insert new Contacts to Address Book
+mysql>
+mysql> INSERT INTO addressbook(firstName,lastName,mobileNumber,email,city,state,zip) VALUES
+    -> ('Nikhil','Patil','9854712563','abc@gmail.com','Jalgaon','Maharashtra',425001),
+    -> ('Kunal','Sonawane','7757877309','kunal@gmail.com','Pune','Mahrashtra',411033),
+    -> ('Mayur','Mishra','9370785156','mayur@gmail.com','Hadapsar','Mahrashtra',411013);
+Query OK, 3 rows affected (0.15 sec)
+Records: 3  Duplicates: 0  Warnings: 0
+
+mysql> select * from addressbook;
++-----------+----------+--------------+-----------------+----------+-------------+--------+
+| firstName | lastName | mobileNumber | email           | city     | state       | zip    |
++-----------+----------+--------------+-----------------+----------+-------------+--------+
+| Kunal     | Sonawane | 7757877309   | kunal@gmail.com | Pune     | Mahrashtra  | 411033 |
+| Mayur     | Mishra   | 9370785156   | mayur@gmail.com | Hadapsar | Mahrashtra  | 411013 |
+| Nikhil    | Patil    | 9854712563   | abc@gmail.com   | Jalgaon  | Maharashtra | 425001 |
++-----------+----------+--------------+-----------------+----------+-------------+--------+
+3 rows in set (0.00 sec)
