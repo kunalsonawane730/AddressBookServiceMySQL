@@ -455,3 +455,32 @@ mysql> select * from contacts_address;
 | Manoj     | 560040 |
 +-----------+--------+
 3 rows in set (0.00 sec)
+
+mysql> #UC13 Ensure all retrieve queries done especially in UC 6, UC 7, UC 8 and UC 10 are working with new table structure
+mysql>
+mysql> select count(contacts.firstname) from contacts,contacts_address,address
+    -> where contacts.firstname = contacts_address.firstname and contacts_address.zip = address.zip and address.state = 'karnataka';
++---------------------------+
+| count(contacts.firstname) |
++---------------------------+
+|                         0 |
++---------------------------+
+1 row in set (0.00 sec)
+
+mysql> select count(contacts.firstname) from contacts,contacts_address,address
+    -> where contacts.firstname = contacts_address.firstname and contacts_address.zip = address.zip and address.city = 'karnataka';
++---------------------------+
+| count(contacts.firstname) |
++---------------------------+
+|                         1 |
++---------------------------+
+1 row in set (0.00 sec)
+
+mysql> select type, Count(firstName) from contacts_relation group by type;
++--------+------------------+
+| type   | Count(firstName) |
++--------+------------------+
+| family |                1 |
+| friend |                2 |
++--------+------------------+
+2 rows in set (0.00 sec)
