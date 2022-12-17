@@ -167,3 +167,46 @@ mysql> select * from addressbook
 | Nikhil    | Patil    | 9854712563   | abc@gmail.com   | Jalgaon   | Maharashtra | 425001 |
 +-----------+----------+--------------+-----------------+-----------+-------------+--------+
 3 rows in set (0.02 sec)
+
+mysql> #UC9 Ability to identify each Address Book with name and Type.
+mysql>
+mysql> alter table addressBook add type varchar(15) after lastName;
+Query OK, 0 rows affected (0.31 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> describe addressbook;
++--------------+-------------+------+-----+---------+-------+
+| Field        | Type        | Null | Key | Default | Extra |
++--------------+-------------+------+-----+---------+-------+
+| firstName    | varchar(50) | NO   | PRI | NULL    |       |
+| lastName     | varchar(50) | NO   |     | NULL    |       |
+| type         | varchar(15) | YES  |     | NULL    |       |
+| mobileNumber | varchar(20) | NO   |     | NULL    |       |
+| email        | varchar(50) | NO   |     | NULL    |       |
+| city         | varchar(50) | NO   |     | NULL    |       |
+| state        | varchar(50) | NO   |     | NULL    |       |
+| zip          | mediumtext  | NO   |     | NULL    |       |
++--------------+-------------+------+-----+---------+-------+
+8 rows in set (0.00 sec)
+
+mysql> update addressBook set type = 'Family' where firstName = 'Dipali';
+Query OK, 1 row affected (0.06 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> update addressBook set type = 'Profession' where firstName='Mayur';
+Query OK, 1 row affected (0.14 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> update addressBook set type = 'Friend' where firstName = 'Nikhil';
+Query OK, 1 row affected (0.06 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> select * from addressbook;
++-----------+----------+------------+--------------+-----------------+-----------+-------------+--------+
+| firstName | lastName | type       | mobileNumber | email           | city      | state       | zip    |
++-----------+----------+------------+--------------+-----------------+-----------+-------------+--------+
+| Dipali    | Sonawane | Family     | 9854712563   | abc@gmail.com   | Bangalore | Karnataka   | 560039 |
+| Mayur     | Mishra   | Profession | 9370785156   | mayur@gmail.com | Hadapsar  | Mahrashtra  | 411013 |
+| Nikhil    | Patil    | Friend     | 9854712563   | abc@gmail.com   | Jalgaon   | Maharashtra | 425001 |
++-----------+----------+------------+--------------+-----------------+-----------+-------------+--------+
+3 rows in set (0.00 sec)
