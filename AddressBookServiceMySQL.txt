@@ -108,3 +108,27 @@ mysql> select * from addressbook;
 | Nikhil    | Patil    | 9854712563   | abc@gmail.com   | Jalgaon  | Maharashtra | 425001 |
 +-----------+----------+--------------+-----------------+----------+-------------+--------+
 2 rows in set (0.00 sec)
+
+mysql> #UC6 Ability to Retrieve Person belonging to a City or State from the Address Book
+mysql>
+mysql> INSERT INTO addressbook(firstName,lastName,mobileNumber,email,city,state,zip) VALUES
+    -> ('Dipali','Sonawane','9854712563','abc@gmail.com','Bangalore','Karnataka',560039);
+Query OK, 1 row affected (0.08 sec)
+
+mysql> select * from addressbook;
++-----------+----------+--------------+-----------------+-----------+-------------+--------+
+| firstName | lastName | mobileNumber | email           | city      | state       | zip    |
++-----------+----------+--------------+-----------------+-----------+-------------+--------+
+| Dipali    | Sonawane | 9854712563   | abc@gmail.com   | Bangalore | Karnataka   | 560039 |
+| Mayur     | Mishra   | 9370785156   | mayur@gmail.com | Hadapsar  | Mahrashtra  | 411013 |
+| Nikhil    | Patil    | 9854712563   | abc@gmail.com   | Jalgaon   | Maharashtra | 425001 |
++-----------+----------+--------------+-----------------+-----------+-------------+--------+
+3 rows in set (0.00 sec)
+
+mysql> SELECT * from addressBook where state = 'Karnataka';
++-----------+----------+--------------+---------------+-----------+-----------+--------+
+| firstName | lastName | mobileNumber | email         | city      | state     | zip    |
++-----------+----------+--------------+---------------+-----------+-----------+--------+
+| Dipali    | Sonawane | 9854712563   | abc@gmail.com | Bangalore | Karnataka | 560039 |
++-----------+----------+--------------+---------------+-----------+-----------+--------+
+1 row in set (0.00 sec)
