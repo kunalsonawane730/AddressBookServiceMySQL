@@ -257,3 +257,25 @@ mysql>  select type, Count(type) from addressBook group by type;
 | Friend     |           1 |
 +------------+-------------+
 3 rows in set (0.00 sec)
+
+mysql> #UC11 Ability to add person to both Friend and Family
+mysql>
+mysql> INSERT INTO addressbook(firstName,lastName,type,mobileNumber,email,city,state,zip) VALUES
+    -> ('Nitin','Rathod','Family','9632105478','xyz@yahoo.com','Mumbai','Maharashtra',400011);
+Query OK, 1 row affected (0.04 sec)
+
+mysql> INSERT INTO addressbook(firstName,lastName,type,mobileNumber,email,city,state,zip) VALUES
+    -> ('Dipak','Sonawane','Friend','9856321478','abc@yahoo.com','Pune','Maharashtra',411027);
+Query OK, 1 row affected (0.05 sec)
+
+mysql> select * from addressbook;
++-----------+----------+------------+--------------+-----------------+-----------+-------------+--------+
+| firstName | lastName | type       | mobileNumber | email           | city      | state       | zip    |
++-----------+----------+------------+--------------+-----------------+-----------+-------------+--------+
+| Dipak     | Sonawane | Friend     | 9856321478   | abc@yahoo.com   | Pune      | Maharashtra | 411027 |
+| Dipali    | Sonawane | Family     | 9854712563   | abc@gmail.com   | Bangalore | Karnataka   | 560039 |
+| Mayur     | Mishra   | Profession | 9370785156   | mayur@gmail.com | Hadapsar  | Mahrashtra  | 411013 |
+| Nikhil    | Patil    | Friend     | 9854712563   | abc@gmail.com   | Jalgaon   | Maharashtra | 425001 |
+| Nitin     | Rathod   | Family     | 9632105478   | xyz@yahoo.com   | Mumbai    | Maharashtra | 400011 |
++-----------+----------+------------+--------------+-----------------+-----------+-------------+--------+
+5 rows in set (0.00 sec)
